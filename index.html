@@ -4,45 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>aloysiuschan.co</title>
+    <title>Aloysius Chan | Computer Science Student</title>
+    <script src="https://kit.fontawesome.com/77cc0b968a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body onload="fillAction()">
     <div class="container">
-        <div class="row h-100 align-items-center">
-            <div class="col text-center">
-                <h1>hello</h1>
+        <div class="row">
+            <div class="col">
+                <h1>Hey, I am <span class="highlight">Aloysius</span></h1>
+                <h2 id="caption">i might be <span>drinking coffee</span> right now.</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">                
+                <p>
+                    Year 3 Computer Science undergradute, studying in the National University of Singapore, 
+                    planning to specialise in Artificial Intelligence.
+                </p>
+                <p>
+                    Skilled in Dev-Ops, Full-stack Development and Data Analytics.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h2>Find me here!</h2>
+                <a target="_blank" href="https://github.com/alloystory"><i class="fab fa-github fa-2x"></i></a>
+                <a target="_blank" href="https://instagram.com/aloychanphoto"><i class="fab fa-instagram fa-2x"></i></a>
+                <a target="_blank" href="https://linkedin.com/in/aloysius-chan"><i class="fab fa-linkedin fa-2x"></i></a>
             </div>
         </div>
     </div>
-
-    <div class="container">
-        <div class="row h-100 align-items-center">
-            <div class="col text-center">
-                <h1>i am aloysius</h1>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <nav id="main_menu" class="row h-100 justify-content-center text-center">
-            <div class="col-12">
-                <a href="/about.html" class="nav-link">about</a>
-            </div>
-            <div class="col-12">
-                <a href="/playground.html" class="nav-link">playground</a>
-            </div>
-            <div class="col-12">
-                <a href="/darkroom.html" class="nav-link">darkRoom</a>
-            </div>
-        </nav>
-    </div>
-
 
     <!-- Bootstrap JS Files -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        function fillAction() {
+            let actions = {
+                weekday: {
+                    earlyMorning: [["trying to wake up", "smashing my alarm", "highly unconscious"], [0.3, 0.2, 0.5]],
+                    morning: [["drinking coffee", "still dead", "checking out the LOLs on reddit"], [0.5, 0.2, 0.3]],
+                    afternoon: [["eating my lunch", "at school", "coding", "debugging"], [0.25, 0.25, 0.25, 0.25]],
+                    lateAfternoon: [["still debugging", "still coding", "finding happiness in snacks", "??????"], [0.3, 0.3, 0.35, 0.05]],
+                    evening: [["still debugging...", "searching for answers on StackOverFlow"], [0.4, 0.6]],
+                    night: [["gaming", "actually going to bed", "wishful thinking for an answer"], [0.6, 0.1, 0.3]],
+                    other: [["sleeping"], [1.0]]
+                }, 
+                weekend: {
+                    earlyMorning: [["highly unconscious"], [1.0]],
+                    morning: [["drinking coffee", "still dead", "checking out the LOLs on reddit"], [0.5, 0.2, 0.3]],
+                    afternoon: [["eating my lunch", "coding", "debugging"], [0.33, 0.33, 0.33]],
+                    lateAfternoon: [["still debugging", "still coding", "finding happiness in snacks", "??????"], [0.3, 0.3, 0.35, 0.05]],
+                    evening: [["searching for answers on StackOverFlow", "actually going for a run!"], [0.5, 0.5]],
+                    night: [["gaming", "actually going to bed", "solving more puzzles"], [0.6, 0.1, 0.3]],
+                    other: [["gaming", "sleeping"], [0.01, 0.99]]
+                }
+            };
+
+            let rno = Math.random();
+            let today = new Date();
+            let action = "";
+
+            // Weekdays
+            if (today.getDay() > 0 && today.getDay() < 6) {
+                if (today.getHours() >= 8 && today.getHours() < 10) { action = actions.weekday.earlyMorning[0][getIndexFromProb(actions.weekday.earlyMorning[1], rno)]; }
+                else if (today.getHours() >= 10 && today.getHours() < 12) { action = actions.weekday.morning[0][getIndexFromProb(actions.weekday.morning[1], rno)]; }
+                else if (today.getHours() >= 12 && today.getHours() < 14) { action = actions.weekday.afternoon[0][getIndexFromProb(actions.weekday.afternoon[1], rno)]; }
+                else if (today.getHours() >= 14 && today.getHours() < 18) { action = actions.weekday.lateAfternoon[0][getIndexFromProb(actions.weekday.lateAfternoon[1], rno)]; }
+                else if (today.getHours() >= 18 && today.getHours() < 23) { action = actions.weekday.evening[0][getIndexFromProb(actions.weekday.evening[1], rno)]; }
+                else if (today.getHours() >= 23 || today.getHours() < 2) { action = actions.weekday.night[0][getIndexFromProb(actions.weekday.night[1], rno)]; }
+                else { action = actions.weekday.other[0][getIndexFromProb(actions.weekday.other[1], rno)]; }
+            }
+            // Weekends
+            else {
+                if (today.getHours() >= 8 && today.getHours() < 10) { action = actions.weekend.earlyMorning[0][getIndexFromProb(actions.weekend.earlyMorning[1], rno)]; }
+                else if (today.getHours() >= 10 && today.getHours() < 12) { action = actions.weekend.morning[0][getIndexFromProb(actions.weekend.morning[1], rno)]; }
+                else if (today.getHours() >= 12 && today.getHours() < 14) { action = actions.weekend.afternoon[0][getIndexFromProb(actions.weekend.afternoon[1], rno)]; }
+                else if (today.getHours() >= 14 && today.getHours() < 18) { action = actions.weekend.lateAfternoon[0][getIndexFromProb(actions.weekend.lateAfternoon[1], rno)]; }
+                else if (today.getHours() >= 18 && today.getHours() < 23) { action = actions.weekend.evening[0][getIndexFromProb(actions.weekend.evening[1], rno)]; }
+                else if (today.getHours() >= 23 || today.getHours() < 2) { action = actions.weekend.night[0][getIndexFromProb(actions.weekend.night[1], rno)]; }
+                else { action = actions.weekend.other[0][getIndexFromProb(actions.weekend.other[1], rno)]; }
+            }
+
+            document.querySelector("#caption span").innerHTML = action;
+        }
+        
+        function getIndexFromProb(probas, rno, index = 0) {
+            if (probas.length <= 0 || rno < 0) { return index - 1; }
+            else {
+                let prob = probas.shift();
+                return getIndexFromProb(probas, rno - prob, ++index);
+            } 
+        }
+    </script>
 </body>
 </html>
