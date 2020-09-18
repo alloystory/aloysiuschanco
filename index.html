@@ -47,61 +47,10 @@
 
     <script>
         function fillAction() {
-            let actions = {
-                weekday: {
-                    earlyMorning: [["trying to wake up", "smashing my alarm", "highly unconscious"], [0.3, 0.2, 0.5]],
-                    morning: [["drinking coffee", "still dead", "checking out the LOLs on reddit"], [0.5, 0.2, 0.3]],
-                    afternoon: [["eating my lunch", "at school", "coding", "debugging"], [0.25, 0.25, 0.25, 0.25]],
-                    lateAfternoon: [["still debugging", "still coding", "finding happiness in snacks", "??????"], [0.3, 0.3, 0.35, 0.05]],
-                    evening: [["still debugging...", "searching for answers on StackOverFlow"], [0.4, 0.6]],
-                    night: [["gaming", "actually going to bed", "wishful thinking for an answer"], [0.6, 0.1, 0.3]],
-                    other: [["sleeping"], [1.0]]
-                }, 
-                weekend: {
-                    earlyMorning: [["highly unconscious"], [1.0]],
-                    morning: [["drinking coffee", "still dead", "checking out the LOLs on reddit"], [0.5, 0.2, 0.3]],
-                    afternoon: [["eating my lunch", "coding", "debugging"], [0.33, 0.33, 0.33]],
-                    lateAfternoon: [["still debugging", "still coding", "finding happiness in snacks", "??????"], [0.3, 0.3, 0.35, 0.05]],
-                    evening: [["searching for answers on StackOverFlow", "actually going for a run!"], [0.5, 0.5]],
-                    night: [["gaming", "actually going to bed", "solving more puzzles"], [0.6, 0.1, 0.3]],
-                    other: [["gaming", "sleeping"], [0.01, 0.99]]
-                }
-            };
-
-            let rno = Math.random();
-            let today = new Date();
-            let action = "";
-
-            // Weekdays
-            if (today.getDay() > 0 && today.getDay() < 6) {
-                if (today.getHours() >= 8 && today.getHours() < 10) { action = actions.weekday.earlyMorning[0][getIndexFromProb(actions.weekday.earlyMorning[1], rno)]; }
-                else if (today.getHours() >= 10 && today.getHours() < 12) { action = actions.weekday.morning[0][getIndexFromProb(actions.weekday.morning[1], rno)]; }
-                else if (today.getHours() >= 12 && today.getHours() < 14) { action = actions.weekday.afternoon[0][getIndexFromProb(actions.weekday.afternoon[1], rno)]; }
-                else if (today.getHours() >= 14 && today.getHours() < 18) { action = actions.weekday.lateAfternoon[0][getIndexFromProb(actions.weekday.lateAfternoon[1], rno)]; }
-                else if (today.getHours() >= 18 && today.getHours() < 23) { action = actions.weekday.evening[0][getIndexFromProb(actions.weekday.evening[1], rno)]; }
-                else if (today.getHours() >= 23 || today.getHours() < 2) { action = actions.weekday.night[0][getIndexFromProb(actions.weekday.night[1], rno)]; }
-                else { action = actions.weekday.other[0][getIndexFromProb(actions.weekday.other[1], rno)]; }
-            }
-            // Weekends
-            else {
-                if (today.getHours() >= 8 && today.getHours() < 10) { action = actions.weekend.earlyMorning[0][getIndexFromProb(actions.weekend.earlyMorning[1], rno)]; }
-                else if (today.getHours() >= 10 && today.getHours() < 12) { action = actions.weekend.morning[0][getIndexFromProb(actions.weekend.morning[1], rno)]; }
-                else if (today.getHours() >= 12 && today.getHours() < 14) { action = actions.weekend.afternoon[0][getIndexFromProb(actions.weekend.afternoon[1], rno)]; }
-                else if (today.getHours() >= 14 && today.getHours() < 18) { action = actions.weekend.lateAfternoon[0][getIndexFromProb(actions.weekend.lateAfternoon[1], rno)]; }
-                else if (today.getHours() >= 18 && today.getHours() < 23) { action = actions.weekend.evening[0][getIndexFromProb(actions.weekend.evening[1], rno)]; }
-                else if (today.getHours() >= 23 || today.getHours() < 2) { action = actions.weekend.night[0][getIndexFromProb(actions.weekend.night[1], rno)]; }
-                else { action = actions.weekend.other[0][getIndexFromProb(actions.weekend.other[1], rno)]; }
-            }
-
+            let actions = ["drinking coffee", "coding", "debugging", "daydreaming", "searching for answers on StackOverFlow"]
+            let rno = Math.floor(Math.random() * actions.length);
+            let action = actions[rno];
             document.querySelector("#caption span").innerHTML = action;
-        }
-        
-        function getIndexFromProb(probas, rno, index = 0) {
-            if (probas.length <= 0 || rno < 0) { return index - 1; }
-            else {
-                let prob = probas.shift();
-                return getIndexFromProb(probas, rno - prob, ++index);
-            } 
         }
     </script>
 </body>
