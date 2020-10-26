@@ -1,0 +1,97 @@
+@import "fonts.scss";
+
+.container-fluid {
+    padding: 0;
+}
+
+section:not(#about) {
+    margin: 0 auto 120px 0;
+}
+
+.sidebar-nav {
+    background-color: $secondary;
+    width: 240px;
+    padding: 40px;
+    position: sticky;
+    top: 0;
+
+    a:hover {
+        background-color: $hover;
+    }
+}
+
+.mobile-nav {
+    background-color: $secondary;
+    color: $primary;
+    padding: 24px;
+    z-index: 2000;
+    position: sticky;
+    top: 0;
+    
+    .hamburger, .close {
+        align-self: flex-end;
+        color: $primary;
+        font-size: 2rem;
+        opacity: 1;
+        padding: 0;
+    }
+
+    a:hover, .close:hover {
+        color: $accent;
+    }
+}
+
+.highlight {
+    color: $accent;
+}
+
+.btn {
+    height: 40px;
+    min-width: 120px;
+    padding: 0 1rem;
+    margin: 0 1rem 0 0;
+    border: none;
+}
+
+.btn:hover {
+    background-color: $accent;
+}
+
+#about a:hover {
+    color: $accent;
+}
+
+#contact a {
+    color: $accent;
+}
+
+.card {
+    color: $white;
+    padding: 2rem 0 3rem 0;
+}
+
+.table-row {
+    border-left: 4px dotted $accent;
+    padding: 2rem 0 2rem 2rem;
+}
+
+hr {
+    background-color: $accent;
+    width: 40%;
+    height: 2px;
+    border-radius: 50%;
+    margin: 0 auto 2.5rem -1rem;
+}
+
+#about {
+    .fab {
+        font-size: 24px;
+    }
+}
+
+#projects {
+    img {
+        max-width: 100%;
+        max-height: auto;
+    }
+}

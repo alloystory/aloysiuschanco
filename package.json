@@ -1,0 +1,32 @@
+{
+  "name": "aloysiuschanco",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alloystory/aloysiuschanco.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alloystory/aloysiuschanco/issues"
+  },
+  "homepage": "https://github.com/alloystory/aloysiuschanco#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "bootstrap": "^4.5.3",
+    "gulp-rename": "^2.0.0",
+    "gulp-util": "^3.0.8",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0"
+  }
+}
