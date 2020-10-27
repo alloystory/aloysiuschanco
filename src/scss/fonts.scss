@@ -1,40 +1,42 @@
 body {
     font-family: 'Oxygen', sans-serif;
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 21px;
 }
 
 h1 {
-    font-size: 80px;
+    font-size: 72px;
     font-weight: bold;
 }
 
 h2 {
-    font-size: 80px;
+    font-size: 48px;
     font-weight: bold;
 }
 
 h3 {
-    font-size: 48px;
-}
-
-h4 {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 24px;
 }
 
 .lead {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 22px;
 }
 
-// @media screen and (max-width: 500px) {
-//     h1 {
-//         font-size: 80px;
-//     }
-// }
+.copyright {
+    font-size: 12px;
+    font-weight: 300;
+}
 
-// @media screen and (max-width: 1320px) {
-//     h1 {
-//         font-size: 108px;
-//     }
-// }
+@media screen and (min-width: map-get($grid-breakpoints, "md")) {
+    h1 { font-size: 100px; }
+    h2 { font-size: 72px; }
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, "xl")) {
+    h1 { font-size: 120px; }
+    h2 { font-size: 80px; }
+    h3 { font-size: 28px; }
+    .lead { font-size: 22px; line-height: 28px; }
+}

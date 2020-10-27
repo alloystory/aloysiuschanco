@@ -1,97 +1,164 @@
 @import "fonts.scss";
 
-.container-fluid {
-    padding: 0;
-}
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
 
-section:not(#about) {
-    margin: 0 auto 120px 0;
-}
-
-.sidebar-nav {
-    background-color: $secondary;
-    width: 240px;
-    padding: 40px;
-    position: sticky;
-    top: 0;
-
-    a:hover {
-        background-color: $hover;
+    .container-fluid {
+        padding: 0 48px;
+        max-width: 1366px;
     }
-}
-
-.mobile-nav {
-    background-color: $secondary;
-    color: $primary;
-    padding: 24px;
-    z-index: 2000;
-    position: sticky;
-    top: 0;
     
-    .hamburger, .close {
-        align-self: flex-end;
-        color: $primary;
-        font-size: 2rem;
-        opacity: 1;
-        padding: 0;
+    .table-row {
+        border-left: 4px dotted $accent;
+        padding: 2rem 0 2rem 2rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 2rem;
+        border: 2px solid $accent;
+        border-radius: 4rem;
+    }
+    
+    .btn:hover {
+        background-color: $accent;
+    }
+    
+    .btn:focus, .btn:active {
+        outline: none;
+        box-shadow: none;
+    }
+    
+    .highlight, .active {
+        color: $accent;
+    }
+    
+    hr {
+        background-color: $accent;
+        width: 40%;
+        height: 1px;
+        border-radius: 25px;
+        margin: 0 auto 2.5rem 0;
+    }
+}
+
+header {
+    background-color: $secondary;
+
+    .navbar-toggler {
+        border: none;
     }
 
-    a:hover, .close:hover {
+    .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    $height: 1px;
+    $margin: 5px;
+    .hamburger-bar {
+        display: block;
+        height: $height;
+        width: 22px;
+        background-color: $body-color;
+        transform: rotate(0deg);
+        transition: .5s ease-in-out;
+    }
+
+    .hamburger-bar:not(:last-child) {
+        margin-bottom: $margin;
+    }
+
+    .open span:nth-child(1) {
+        transform: translate(0, $height + $margin) rotate(45deg);
+    }
+    
+    .open span:nth-child(2) {
+        width: 0%;
+        opacity: 0;
+    }
+    
+    .open span:nth-child(3) {
+        transform: translate(0, -($height + $margin)) rotate(-45deg);
+    }
+
+    .navbar-nav a {
+        color: $body-color;
+    }
+
+    .navbar-nav a:hover {
         color: $accent;
     }
 }
 
-.highlight {
-    color: $accent;
-}
+main {
+    section:not(#about) {
+        margin: 0 auto 120px 0;
+    }
+    
+    #skills {
+        .card {
+            text-align: center;
+            min-width: 300px;
+            background-color: $primary;
+            border-color: $secondary;
+        }
 
-.btn {
-    height: 40px;
-    min-width: 120px;
-    padding: 0 1rem;
-    margin: 0 1rem 0 0;
-    border: none;
-}
+        .card-body {
+            padding: 3rem 2rem;
+        }
 
-.btn:hover {
-    background-color: $accent;
-}
+        @media screen and (min-width: 900px) {
+            .card {
+                flex-basis: 50%;
+            }
+        }
+        
+        @media screen and (min-width: 1366px) {
+            .card {
+                flex-basis: 25%;
+            }
+        }
+    }
+    
+    #projects {
+        img {
+            width: 100%;
+            max-width: 300px;
+            max-height: auto;
+        }
+    }
 
-#about a:hover {
-    color: $accent;
-}
+    #sidebar-nav {
+        background-color: $secondary;
+        width: 240px;
+        padding: 40px;
+        position: sticky;
+        top: 0;
 
-#contact a {
-    color: $accent;
-}
-
-.card {
-    color: $white;
-    padding: 2rem 0 3rem 0;
-}
-
-.table-row {
-    border-left: 4px dotted $accent;
-    padding: 2rem 0 2rem 2rem;
-}
-
-hr {
-    background-color: $accent;
-    width: 40%;
-    height: 2px;
-    border-radius: 50%;
-    margin: 0 auto 2.5rem -1rem;
-}
-
-#about {
-    .fab {
-        font-size: 24px;
+        a:hover {
+            color: $accent;
+        }
     }
 }
 
-#projects {
-    img {
-        max-width: 100%;
-        max-height: auto;
+footer {
+    padding-top: 72px;
+    padding-bottom: 72px;
+
+    h3 {
+        a {
+            color: $accent;
+        }
+
+        a:hover {
+            color: $accent;
+            text-decoration: underline;
+        }
+    }
+
+    .socials {
+        a { color: $white; }
+        a:hover { color: $accent; }
     }
 }

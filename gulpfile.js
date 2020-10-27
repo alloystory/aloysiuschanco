@@ -11,15 +11,6 @@ function sass(callback) {
     callback()
 }
 
-function css(callback) {
-    // gulp.src("node_modules/bootstrap/dist/css/bootstrap.min.css")
-    //     .pipe(gulp.dest("src/css"))
-    // gulp.src("node_modules/@fortawesome/fontawesome-free/css/brands.min.css")
-    //     .pipe(gulpRename("fa-brands.min.css"))
-    //     .pipe(gulp.dest("src/css"))
-    callback()
-}
-
 function js(callback) {
     gulp.src([
         "node_modules/bootstrap/dist/js/*.min.js",
@@ -35,4 +26,4 @@ function watchSass(callback) {
     callback()
 }
 
-exports.default = gulp.series(sass, css, js, watchSass)
+exports.default = gulp.series(sass, js, watchSass)

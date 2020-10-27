@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 
 // Overrides
-$body-bg: #FFFFFF;
-$body-color: #242424;
-$primary: #242424;
-$secondary: #F5F5F5;
-$hover: #E2E2E2;
-$accent: #D1714E;
+$body-bg: #242424;
+$body-color: #FFFFFF;
+$primary: #333333;
+$secondary: #272727;
+$accent: #e67a52;
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1366px
+);
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "custom.scss";
