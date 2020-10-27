@@ -1,6 +1,6 @@
 const gulp = require("gulp");
 const gulpSass = require("gulp-sass");
-const gulpRename = require("gulp-rename");
+const gulpCleanCSS = require("gulp-clean-css");
 const gulpUtil = require("gulp-util")
 
 function sass(callback) {
@@ -26,4 +26,23 @@ function watchSass(callback) {
     callback()
 }
 
+function compile(callback) {
+    gulp.src("src/scss/style.scss")
+        .pipe(gulpSass())
+        .pipe(gulpCleanCSS())
+        .pipe(gulp.dest("dist/css"))
+
+    gulp.src([
+        "node_modules/bootstrap/dist/js/*.min.js",
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/popper.js/dist/popper.min.js"
+    ])
+        .pipe(gulp.dest("dist/js"))
+
+    gulp.src("src/index.html")
+        .pipe(gulp.dest("dist/"))
+    callback()
+}
+
+exports.compile = compile
 exports.default = gulp.series(sass, js, watchSass)
